@@ -1,0 +1,38 @@
+<div class="container" style="padding: 50px 0;">
+  <h1>Edit Hours for <%= @business_hour.day %></h1>
+
+  <%= form_with(model: [:admin, @business_hour], local: true) do |form| %>
+    <% if @business_hour.errors.any? %>
+      <div style="color: red; margin-bottom: 20px;">
+        <h2><%= pluralize(@business_hour.errors.count, "error") %> prohibited this form from being saved:</h2>
+        <ul>
+          <% @business_hour.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :opens_at, "Opening Time", style: "display: block; font-weight: bold; margin-bottom: 5px;" %>
+      <%= form.text_field :opens_at, style: "padding: 8px; width: 100%; max-width: 200px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :closes_at, "Closing Time", style: "display: block; font-weight: bold; margin-bottom: 5px;" %>
+      <%= form.text_field :closes_at, style: "padding: 8px; width: 100%; max-width: 200px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label style="display: flex; align-items: center; gap: 10px;">
+        <%= form.check_box :is_closed %>
+        <span style="font-weight: bold;">Mark as Closed</span>
+      </label>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <%= form.submit "Update Hours", class: "btn-primary", style: "cursor: pointer;" %>
+      <%= link_to 'Back', admin_business_hours_path, style: "margin-left: 10px;" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,50 @@
+<%= form_with(model: [:admin, menu_item], local: true) do |form| %>
+  <% if menu_item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(menu_item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <ul>
+        <% menu_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="margin-bottom: 10px;">
+    <%= form.label :category, style: "display: block; font-weight: bold;" %>
+    <%= form.select :category, ["sandwiches", "trios", "plates", "family", "starters", "drinks"], {}, style: "display: block; padding: 8px; width: 100%; max-width: 300px;" %>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <%= form.label :title_en, "Title (English)", style: "display: block; font-weight: bold;" %>
+    <%= form.text_field :title_en, style: "display: block; padding: 8px; width: 100%; max-width: 500px;" %>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <%= form.label :title_fr, "Title (French)", style: "display: block; font-weight: bold;" %>
+    <%= form.text_field :title_fr, style: "display: block; padding: 8px; width: 100%; max-width: 500px;" %>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <%= form.label :description_en, "Description (English)", style: "display: block; font-weight: bold;" %>
+    <%= form.text_area :description_en, rows: 3, style: "display: block; padding: 8px; width: 100%; max-width: 500px;" %>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <%= form.label :description_fr, "Description (French)", style: "display: block; font-weight: bold;" %>
+    <%= form.text_area :description_fr, rows: 3, style: "display: block; padding: 8px; width: 100%; max-width: 500px;" %>
+  </div>
+
+  <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+    <div>
+      <%= form.label :price_small, style: "display: block; font-weight: bold;" %>
+      <%= form.number_field :price_small, step: 0.01, style: "display: block; padding: 8px;" %>
+    </div>
+    <div>
+      <%= form.label :price_large, style: "display: block; font-weight: bold;" %>
+      <%= form.number_field :price_large, step: 0.01, style: "display: block; padding: 8px;" %>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= form.submit class: "btn-primary", style: "cursor: pointer;" %>
+  </div>
+<% end %>

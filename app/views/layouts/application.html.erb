@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title>Shawarma Sinbad | Authentic Iraqi Cuisine</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Fonts: Cormorant Garamond for that Old World feel, Montserrat for readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="main-nav">
+      <div class="nav-content">
+        <!-- Brand -->
+        <%= link_to root_path, class: "nav-brand" do %>
+          <%= image_tag "logo.png", alt: "Shawarma Sinbad Logo", class: "navbar-logo" %>
+        <% end %>
+
+        <!-- Navigation -->
+        <div class="nav-links">
+           <%= link_to t('navbar.menu'), menu_path, class: "nav-item" %>
+           <%= link_to t('navbar.history'), history_path, class: "nav-item" %>
+           <%= link_to t('navbar.gallery'), gallery_path, class: "nav-item" %>
+           <%= link_to t('navbar.contact'), contact_path, class: "nav-item" %>
+           
+           <div class="lang-switcher">
+             <%= link_to "EN", { locale: :en }, class: ("active" if I18n.locale == :en) %>
+             <%= link_to "FR", { locale: :fr }, class: ("active" if I18n.locale == :fr) %>
+           </div>
+
+           <!-- Action Button -->
+           <%= link_to t('navbar.order'), "https://www.order.store/store/boulangerie-et-shawarma-sinbad/fV9vG8qOSq62ZWhRNIRS6A", class: "btn-primary", target: "_blank" %>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container-wide">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h4>Shawarma Sinbad</h4>
+            <p><%= t('footer.about') %></p>
+          </div>
+          <div class="footer-col">
+            <h4><%= t('footer.visit_us') %></h4>
+            <p><%= t('contact.address_value') %></p>
+            <% if @business_hours.present? %>
+              <% days_keys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] %>
+              <% @business_hours.each_with_index do |hour, index| %>
+                 <p style="margin-bottom: <%= index == @business_hours.size - 1 ? '0.8rem' : '0.2rem' %>;">
+                   <span style="display: inline-block; width: 100px;"><%= t("contact.#{days_keys[hour.position]}") %>:</span>
+                   <% if hour.is_closed %>
+                     Closed
+                   <% else %>
+                     <%= hour.opens_at %> - <%= hour.closes_at %>
+                   <% end %>
+                 </p>
+              <% end %>
+            <% else %>
+              <p><%= t('contact.mon') %> - <%= t('contact.thu') %> & <%= t('contact.sun') %>: <%= t('contact.hour_14_01') %></p>
+              <p><%= t('contact.fri') %> - <%= t('contact.sat') %>: <%= t('contact.hour_14_02') %></p>
+            <% end %>
+            <p><%= t('contact.phone_value') %></p>
+          </div>
+          <div class="footer-col">
+            <h4><%= t('footer.follow_us') %></h4>
+            <a href="https://www.instagram.com/sinbadgatineau/" target="_blank">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <%= Time.now.year %> Shawarma Sinbad. Developped by Mohammed Jabbar.</p>
+          <div style="margin-top: 10px; opacity: 0.5; font-size: 0.8rem;">
+            <%= link_to "Admin Panel", admin_dashboard_path, style: "color: inherit; text-decoration: none;" %>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

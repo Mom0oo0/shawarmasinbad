@@ -1,0 +1,15 @@
+<div class="container" style="padding: 100px 0; max-width: 400px; text-align: center;">
+  <h1>Admin Access</h1>
+  
+  <% if flash[:alert] %>
+    <div style="color: red; margin-bottom: 20px;"><%= flash[:alert] %></div>
+  <% end %>
+
+  <%= form_with url: admin_login_path, local: true do |form| %>
+    <div style="margin-bottom: 20px;">
+      <%= form.password_field :password, placeholder: "Enter Password", style: "padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;" %>
+    </div>
+    
+    <%= form.submit "Login", class: "btn-primary", style: "width: 100%; cursor: pointer;" %>
+  <% end %>
+</div>

@@ -1,0 +1,71 @@
+<div class="hero-section" style="padding: 2rem 0; min-height: 30vh;">
+  <div class="container">
+    <h1 class="hero-headline" style="font-size: 3.5rem; margin-bottom: 0.5rem;"><%= t('contact.title') %></h1>
+    <span class="hero-subtitle" style="margin-bottom: 0;"><%= t('contact.subtitle') %></span>
+  </div>
+</div>
+
+<div class="container" style="padding: 6rem 0 6rem;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem;">
+    
+    <!-- Contact Info -->
+    <div>
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem;"><%= t('contact.location') %></h3>
+        <p style="font-size: 1.1rem;"><%= t('contact.address_value') %></p>
+      </div>
+
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem;"><%= t('contact.hours') %></h3>
+        <table style="width: 100%; max-width: 350px; color: var(--color-text-secondary); border-collapse: collapse;">
+          <% if @business_hours.present? %>
+            <% days_keys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] %>
+            <% @business_hours.each do |hour| %>
+              <tr>
+                <td style="padding-bottom: 0.5rem; padding-right: 1rem;"><%= t("contact.#{days_keys[hour.position]}") %></td>
+                <td style="text-align: right; font-weight: 600; white-space: nowrap;">
+                  <% if hour.is_closed %>
+                    Closed
+                  <% else %>
+                    <%= hour.opens_at %> - <%= hour.closes_at %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td style="padding-bottom: 0.5rem; padding-right: 1rem;"><%= t('contact.mon') %> - <%= t('contact.thu') %></td>
+              <td style="text-align: right; font-weight: 600; white-space: nowrap;"><%= t('contact.hour_14_01') %></td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 0.5rem; padding-right: 1rem;"><%= t('contact.fri') %> - <%= t('contact.sat') %></td>
+              <td style="text-align: right; font-weight: 600; white-space: nowrap;"><%= t('contact.hour_14_02') %></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 1rem;"><%= t('contact.sun') %></td>
+              <td style="text-align: right; font-weight: 600; white-space: nowrap;"><%= t('contact.hour_14_01') %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem;"><%= t('contact.phone') %></h3>
+        <p style="font-size: 1.4rem; font-family: var(--font-heading); color: var(--color-accent-red);"><%= t('contact.phone_value') %></p>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div style="min-height: 400px; height: 100%; border-radius: 4px; box-shadow: var(--shadow-card); position: relative; overflow: hidden;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.413203841801!2d-75.7483758!3d45.4211117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce0477142455b5%3A0xe5a363a0a38f323!2s91%20Bd%20Saint-Raymond%2C%20Gatineau%2C%20QC%20J8Y%201S6!5e0!3m2!1sen!2sca!4v1738600000000!5m2!1sen!2sca" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>

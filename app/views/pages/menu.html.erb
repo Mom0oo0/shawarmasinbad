@@ -1,0 +1,261 @@
+<div class="hero-section" style="padding: 2rem 0; min-height: 30vh;">
+  <div class="container">
+    <h1 class="hero-headline" style="font-size: 3.5rem; margin-bottom: 0.5rem;"><%= t('menu.title') %></h1>
+    <span class="hero-subtitle" style="margin-bottom: 0;"><%= t('menu.subtitle') %></span>
+  </div>
+</div>
+
+<div class="container" style="padding: 6rem 0 4rem;">
+
+<% if @menu_items.present? && @menu_items.any? %>
+  <% ["sandwiches", "trios", "plates", "family", "starters", "drinks"].each do |category| %>
+    <% items = @menu_items[category] %>
+    <% if items.present? %>
+      <div class="divider-ornament"><%= t("menu.sections.#{category}", default: category.humanize) %></div>
+      <div class="menu-grid">
+        <% items.each do |item| %>
+          <div class="menu-card">
+            <div class="menu-card-content">
+              <% if item.price_small.present? && item.price_large.present? %>
+                <span class="price-tag"><%= t('menu.small_tag') %>: $<%= item.price_small %> | <%= t('menu.large_tag') %>: $<%= item.price_large %></span>
+              <% elsif item.price_large.present? %>
+                <span class="price-tag">$<%= item.price_large %></span>
+              <% elsif item.price_small.present? %>
+                <span class="price-tag">$<%= item.price_small %></span>
+              <% end %>
+              <h4><%= (I18n.locale == :fr ? item.title_fr : item.title_en).html_safe %></h4>
+              <% desc = (I18n.locale == :fr ? item.description_fr : item.description_en) %>
+              <% if desc.present? %>
+                <p><%= desc %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  
+  <!-- Sandwiches -->
+  <div class="divider-ornament"><%= t('menu.sections.sandwiches') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $8.99 | <%= t('menu.large_tag') %>: $12.99</span>
+        <h4><%= t('menu.items.poulet_sandwich').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $9.99 | <%= t('menu.large_tag') %>: $14.99</span>
+        <h4><%= t('menu.items.boeuf_sandwich').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $9.99 | <%= t('menu.large_tag') %>: $14.99</span>
+        <h4><%= t('menu.items.mixte_sandwich').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $8.99 | <%= t('menu.large_tag') %>: $12.99</span>
+        <h4><%= t('menu.items.falafel_sandwich').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trios -->
+  <div class="divider-ornament"><%= t('menu.sections.trios') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $14.49 | <%= t('menu.large_tag') %>: $19.49</span>
+        <h4><%= t('menu.items.poulet_trio').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $15.49 | <%= t('menu.large_tag') %>: $20.49</span>
+        <h4><%= t('menu.items.boeuf_trio').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $15.49 | <%= t('menu.large_tag') %>: $20.49</span>
+        <h4><%= t('menu.items.mixte_trio').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plates -->
+  <div class="divider-ornament"><%= t('menu.sections.plates') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$20.49</span>
+        <h4><%= t('menu.items.plate_poulet').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$21.49</span>
+        <h4><%= t('menu.items.plate_boeuf').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$21.49</span>
+        <h4><%= t('menu.items.plate_mixte').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$22.99</span>
+        <h4><%= t('menu.items.brochettes_poulet').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$24.49</span>
+        <h4><%= t('menu.items.brochettes_boeuf').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$22.99</span>
+        <h4><%= t('menu.items.kabab_boeuf').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$17.99</span>
+        <h4><%= t('menu.items.plate_falafel').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family -->
+  <div class="divider-ornament"><%= t('menu.sections.family') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$61.99</span>
+        <h4><%= t('menu.items.family_poulet_4_5').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$64.99</span>
+        <h4><%= t('menu.items.family_boeuf_4_5').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$64.99</span>
+        <h4><%= t('menu.items.family_mixte_4_5').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$89.99</span>
+        <h4><%= t('menu.items.family_poulet_7_8').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$93.99</span>
+        <h4><%= t('menu.items.family_boeuf_7_8').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$93.99</span>
+        <h4><%= t('menu.items.family_mixte_7_8').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$93.99</span>
+        <h4><%= t('menu.items.family_brochettes_7_9').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sides & Starters -->
+  <div class="divider-ornament"><%= t('menu.sections.starters') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $5.99 | <%= t('menu.large_tag') %>: $7.99</span>
+        <h4><%= t('menu.items.side_riz').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $5.99 | <%= t('menu.large_tag') %>: $7.99</span>
+        <h4><%= t('menu.items.side_patates').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $5.99 | <%= t('menu.large_tag') %>: $7.99</span>
+        <h4><%= t('menu.items.side_ail').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $5.99 | <%= t('menu.large_tag') %>: $7.99</span>
+        <h4><%= t('menu.items.side_hummus').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $4.99 | <%= t('menu.large_tag') %>: $6.99</span>
+        <h4><%= t('menu.items.side_fattouche').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag"><%= t('menu.small_tag') %>: $5.99 | <%= t('menu.large_tag') %>: $7.99</span>
+        <h4><%= t('menu.items.side_taboule').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$2.50</span>
+        <h4><%= t('menu.items.side_kebbeh').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$2.49</span>
+        <h4><%= t('menu.items.side_samboussa').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drinks -->
+  <div class="divider-ornament"><%= t('menu.sections.drinks') %></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$1.99</span>
+        <h4><%= t('menu.items.drink_soda').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$3.50</span>
+        <h4><%= t('menu.items.drink_ayran').html_safe %></h4>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-content">
+        <span class="price-tag">$2.99</span>
+        <h4><%= t('menu.items.drink_juice').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

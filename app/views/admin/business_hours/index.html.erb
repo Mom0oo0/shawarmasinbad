@@ -1,0 +1,31 @@
+<div class="container" style="padding: 50px 0;">
+  <h1>Manage Business Hours</h1>
+  
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+      <tr style="text-align: left; background: #f0f0f0;">
+        <th style="padding: 10px;">Day</th>
+        <th style="padding: 10px;">Opens At</th>
+        <th style="padding: 10px;">Closes At</th>
+        <th style="padding: 10px;">Status</th>
+        <th style="padding: 10px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @business_hours.each do |hour| %>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 10px;"><%= hour.day %></td>
+          <td style="padding: 10px;"><%= hour.opens_at %></td>
+          <td style="padding: 10px;"><%= hour.closes_at %></td>
+          <td style="padding: 10px;"><%= hour.is_closed ? "Closed" : "Open" %></td>
+          <td style="padding: 10px;">
+            <%= link_to 'Edit', edit_admin_business_hour_path(hour), class: "btn-hero-outline", style: "padding: 5px 10px; font-size: 0.8rem;" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  <%= link_to "Back to Dashboard", admin_dashboard_path %>
+</div>

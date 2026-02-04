@@ -1,0 +1,20 @@
+<div class="container admin-dashboard" style="padding: 50px 0;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <h1>Admin Dashboard</h1>
+    <%= link_to "Logout", admin_logout_path, class: "btn-hero-outline" %>
+  </div>
+
+  <div class="menu-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="menu-card" style="padding: 30px; text-align: center;">
+      <h3>Content Management</h3>
+      <p>Add, edit or remove items from the menu.</p>
+      <%= link_to "Manage Menu Items", admin_menu_items_path, class: "btn-primary", style: "display: inline-block; margin-top: 10px;" %>
+    </div>
+
+    <div class="menu-card" style="padding: 30px; text-align: center;">
+      <h3>Business Settings</h3>
+      <p>Update opening hours and availability.</p>
+      <%= link_to "Manage Hours", admin_business_hours_path, class: "btn-primary", style: "display: inline-block; margin-top: 10px;" %>
+    </div>
+  </div>
+</div>

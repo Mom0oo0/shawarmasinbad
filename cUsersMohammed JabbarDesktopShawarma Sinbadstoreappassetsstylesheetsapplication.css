@@ -1,0 +1,19 @@
+
+/* Navbar Scroll Animation */
+.main-nav {
+  transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-nav.scrolled {
+  padding: 0.5rem 0;
+  background-color: rgba(245, 240, 230, 0.98);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.navbar-logo {
+  transition: height 0.3s ease;
+}
+
+.main-nav.scrolled .navbar-logo {
+  height: 55px;
+}
