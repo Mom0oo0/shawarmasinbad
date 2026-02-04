@@ -5,7 +5,7 @@ days.each_with_index do |day, index|
   BusinessHour.create!(
     day: day, 
     opens_at: "14h00", 
-    closes_at: (index >= 4 ? "02h00" : "01h00"), # Fri, Sat, Sun open late? Based on user request/context
+    closes_at: (index >= 4 ? "02h00" : "01h00"),
     position: index
   )
 end
@@ -16,10 +16,8 @@ MenuItem.destroy_all
 # Sandwiches
 MenuItem.create!(
   category: "sandwiches",
-  title_fr: "Sandwich Poulet",
+  title_fr: "Sandwich au Poulet",
   title_en: "Chicken Sandwich",
-  description_fr: "Shawarma au poulet avec sauce à l'ail et cornichons dans un pita frais.",
-  description_en: "Juicy chicken shawarma with garlic sauce and pickles in fresh pita.",
   price_small: 8.99,
   price_large: 12.99,
   position: 1
@@ -27,10 +25,8 @@ MenuItem.create!(
 
 MenuItem.create!(
   category: "sandwiches",
-  title_fr: "Sandwich Boeuf",
+  title_fr: "Sandwich au Bœuf",
   title_en: "Beef Sandwich",
-  description_fr: "Shawarma au bœuf tendre avec tahini, persil et oignons.",
-  description_en: "Tender beef shawarma with tahini, parsley, and onions.",
   price_small: 9.99,
   price_large: 14.99,
   position: 2
@@ -40,8 +36,6 @@ MenuItem.create!(
   category: "sandwiches",
   title_fr: "Sandwich Mixte",
   title_en: "Mixed Sandwich",
-  description_fr: "Un mélange parfait de poulet et de bœuf pour une saveur ultime.",
-  description_en: "A perfect blend of chicken and beef for the ultimate flavor.",
   price_small: 9.99,
   price_large: 14.99,
   position: 3
@@ -51,8 +45,6 @@ MenuItem.create!(
   category: "sandwiches",
   title_fr: "Sandwich Falafel",
   title_en: "Falafel Sandwich",
-  description_fr: "Boulettes de pois chiches croustillantes avec tahini et légumes frais.",
-  description_en: "Crispy chickpea patties with tahini and fresh garden vegetables.",
   price_small: 8.99,
   price_large: 12.99,
   position: 4
@@ -61,10 +53,8 @@ MenuItem.create!(
 # Trios
 MenuItem.create!(
   category: "trios",
-  title_fr: "Trio Poulet",
+  title_fr: "Trio au Poulet",
   title_en: "Chicken Trio",
-  description_fr: "Sandwich au poulet servi avec un accompagnement et une boisson fraîche.",
-  description_en: "Chicken sandwich served with a side and a refreshing drink.",
   price_small: 14.49,
   price_large: 19.49,
   position: 1
@@ -72,10 +62,8 @@ MenuItem.create!(
 
 MenuItem.create!(
   category: "trios",
-  title_fr: "Trio Boeuf",
+  title_fr: "Trio au Bœuf",
   title_en: "Beef Trio",
-  description_fr: "Combo sandwich au bœuf avec accompagnement et boisson au choix.",
-  description_en: "Beef sandwich served with a side and a refreshing drink.",
   price_small: 15.49,
   price_large: 20.49,
   position: 2
@@ -85,31 +73,217 @@ MenuItem.create!(
   category: "trios",
   title_fr: "Trio Mixte",
   title_en: "Mixed Trio",
-  description_fr: "L'expérience du sandwich mixte en repas complet et satisfaisant.",
-  description_en: "The mixed sandwich experience in a complete and satisfying meal.",
   price_small: 15.49,
   price_large: 20.49,
   position: 3
 )
 
+# Starters
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Riz",
+  title_en: "Rice",
+  price_small: 5.99,
+  price_large: 7.99,
+  position: 1
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Patates",
+  title_en: "Potatoes",
+  price_small: 5.99,
+  price_large: 7.99,
+  position: 2
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Sauce à l'Ail",
+  title_en: "Garlic Sauce",
+  price_small: 5.99,
+  price_large: 7.99,
+  position: 3
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Hummus",
+  title_en: "Hummus",
+  price_small: 5.99,
+  price_large: 7.99,
+  position: 4
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Salade de Fattouch",
+  title_en: "Fattoush Salad",
+  price_small: 4.99,
+  price_large: 6.99,
+  position: 5
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Taboulé",
+  title_en: "Tabbouleh",
+  price_small: 5.99,
+  price_large: 7.99,
+  position: 6
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Kebbeh au Bœuf",
+  title_en: "Beef Kebbeh",
+  price_small: 2.50,
+  position: 7
+)
+
+MenuItem.create!(
+  category: "starters",
+  title_fr: "Samboussa",
+  title_en: "Sambousek",
+  price_small: 2.49,
+  position: 8
+)
+
 # Plates
 MenuItem.create!(
   category: "plates",
-  title_fr: "Assiette Poulet",
-  title_en: "Chicken Plate",
-  description_fr: "Portion généreuse de shawarma au poulet avec riz, patates et sauce à l'ail.",
-  description_en: "Generous portion of chicken shawarma with rice, potatoes and garlic sauce.",
+  title_fr: "Assiette Shawarma au Poulet",
+  title_en: "Chicken Shawarma Plate",
   price_large: 20.49,
   position: 1
 )
 
 MenuItem.create!(
   category: "plates",
-  title_fr: "Assiette Boeuf",
-  title_en: "Beef Plate",
-  description_fr: "Plat de shawarma au bœuf servi avec riz, patates, salade et tahini.",
-  description_en: "Beef shawarma plate served with rice, potatoes, salad and tahini.",
+  title_fr: "Assiette Shawarma au Bœuf",
+  title_en: "Beef Shawarma Plate",
   price_large: 21.49,
   position: 2
 )
 
+MenuItem.create!(
+  category: "plates",
+  title_fr: "Assiette Shawarma Mixte",
+  title_en: "Mixed Shawarma Plate",
+  price_large: 21.49,
+  position: 3
+)
+
+MenuItem.create!(
+  category: "plates",
+  title_fr: "Assiette de Brochettes de Poulet",
+  title_en: "Chicken Skewers Plate",
+  price_large: 22.99,
+  position: 4
+)
+
+MenuItem.create!(
+  category: "plates",
+  title_fr: "Assiette de Brochettes de Bœuf",
+  title_en: "Beef Skewers Plate",
+  price_large: 24.49,
+  position: 5
+)
+
+MenuItem.create!(
+  category: "plates",
+  title_fr: "Assiette Kebab au Bœuf",
+  title_en: "Beef Kebab Plate",
+  price_large: 22.99,
+  position: 6
+)
+
+MenuItem.create!(
+  category: "plates",
+  title_fr: "Assiette de Falafels",
+  title_en: "Falafel Plate",
+  price_large: 17.99,
+  position: 7
+)
+
+# Family
+MenuItem.create!(
+  category: "family",
+  title_fr: "Poulet pour 4-5 personnes",
+  title_en: "Chicken 4-5 people",
+  price_large: 61.99,
+  position: 1
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Bœuf pour 4-5 personnes",
+  title_en: "Beef 4-5 people",
+  price_large: 64.99,
+  position: 2
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Mixte pour 4-5 personnes",
+  title_en: "Mixed 4-5 people",
+  price_large: 64.99,
+  position: 3
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Poulet pour 7-8 personnes",
+  title_en: "Chicken 7-8 people",
+  price_large: 89.99,
+  position: 4
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Bœuf pour 7-8 personnes",
+  title_en: "Beef 7-8 people",
+  price_large: 93.99,
+  position: 5
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Mixte pour 7-8 personnes",
+  title_en: "Mixed 7-8 people",
+  price_large: 93.99,
+  position: 6
+)
+
+MenuItem.create!(
+  category: "family",
+  title_fr: "Brochettes pour 7-9 personnes",
+  title_en: "Skewers 7-9 people",
+  price_large: 93.99,
+  position: 7
+)
+
+# Drinks
+MenuItem.create!(
+  category: "drinks",
+  title_fr: "Boissons Gazeuses",
+  title_en: "Soft Drinks",
+  price_small: 1.99,
+  position: 1
+)
+
+MenuItem.create!(
+  category: "drinks",
+  title_fr: "Ayran",
+  title_en: "Ayran",
+  price_small: 3.50,
+  position: 2
+)
+
+MenuItem.create!(
+  category: "drinks",
+  title_fr: "Jus Naturel",
+  title_en: "Natural Juice",
+  price_small: 2.99,
+  position: 3
+)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_04_031232) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_04_071523) do
   create_table "business_hours", force: :cascade do |t|
     t.string "closes_at"
     t.datetime "created_at", null: false
@@ -28,8 +28,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_04_031232) do
     t.text "description_fr"
     t.string "image"
     t.integer "position"
-    t.decimal "price_large"
-    t.decimal "price_small"
+    t.decimal "price_large", precision: 10, scale: 2
+    t.decimal "price_small", precision: 10, scale: 2
     t.string "title_en"
     t.string "title_fr"
     t.datetime "updated_at", null: false

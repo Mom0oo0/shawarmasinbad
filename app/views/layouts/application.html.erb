@@ -17,15 +17,21 @@
 
   <body>
     <!-- Navbar -->
-    <nav class="main-nav">
+    <nav class="main-nav" data-controller="navbar">
       <div class="nav-content">
         <!-- Brand -->
         <%= link_to root_path, class: "nav-brand" do %>
           <%= image_tag "logo.png", alt: "Shawarma Sinbad Logo", class: "navbar-logo" %>
         <% end %>
 
+        <button class="mobile-menu-btn" data-action="click->navbar#toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <!-- Navigation -->
-        <div class="nav-links">
+        <div class="nav-links" data-navbar-target="menu">
            <%= link_to t('navbar.menu'), menu_path, class: "nav-item" %>
            <%= link_to t('navbar.history'), history_path, class: "nav-item" %>
            <%= link_to t('navbar.gallery'), gallery_path, class: "nav-item" %>

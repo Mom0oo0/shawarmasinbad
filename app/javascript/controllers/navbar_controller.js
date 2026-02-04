@@ -1,0 +1,17 @@
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = [ "menu" ]
+
+  connect() {
+  }
+
+  toggle(event) {
+    if (event) event.preventDefault()
+    this.menuTarget.classList.toggle("active")
+    this.element.classList.toggle("nav-open")
+    
+    const isExpanded = this.menuTarget.classList.contains("active")
+    this.element.setAttribute("aria-expanded", isExpanded)
+  }
+}

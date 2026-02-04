@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<div class="container" style="padding: 6rem 0 4rem;">
+<div class="container" style="padding-top: 6rem; padding-bottom: 4rem;">
 
 <% if @menu_items.present? && @menu_items.any? %>
   <% ["sandwiches", "trios", "plates", "family", "starters", "drinks"].each do |category| %>
@@ -17,11 +17,11 @@
           <div class="menu-card">
             <div class="menu-card-content">
               <% if item.price_small.present? && item.price_large.present? %>
-                <span class="price-tag"><%= t('menu.small_tag') %>: $<%= item.price_small %> | <%= t('menu.large_tag') %>: $<%= item.price_large %></span>
+                <span class="price-tag"><%= t('menu.small_tag') %>: $<%= number_with_precision(item.price_small, precision: 2) %> | <%= t('menu.large_tag') %>: $<%= number_with_precision(item.price_large, precision: 2) %></span>
               <% elsif item.price_large.present? %>
-                <span class="price-tag">$<%= item.price_large %></span>
+                <span class="price-tag">$<%= number_with_precision(item.price_large, precision: 2) %></span>
               <% elsif item.price_small.present? %>
-                <span class="price-tag">$<%= item.price_small %></span>
+                <span class="price-tag">$<%= number_with_precision(item.price_small, precision: 2) %></span>
               <% end %>
               <h4><%= (I18n.locale == :fr ? item.title_fr : item.title_en).html_safe %></h4>
               <% desc = (I18n.locale == :fr ? item.description_fr : item.description_en) %>

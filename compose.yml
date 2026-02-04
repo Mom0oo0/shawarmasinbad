@@ -1,0 +1,22 @@
+services:
+  app:
+    image: ghcr.io/Mom0oo0/shawarmasinbad:main
+    restart: unless-stopped
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      RAILS_MAX_THREADS: 5
+    volumes:
+      - rails_storage:/rails/storage
+    networks:
+      - web
+    # Uncomment the following lines if you want to expose the port directly
+    # ports:
+    #   - "80:80"
+
+networks:
+  web:
+    external: true
+
+volumes:
+  rails_storage:
