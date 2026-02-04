@@ -595,7 +595,8 @@ a:hover {
 
   /* Hero Section */
   .hero-section {
-    min-height: 80vh; 
+    min-height: 60vh; 
+    background-attachment: scroll; /* Fixed background causes zoom/crop issues on mobile */
   }
   
   .hero-home {
